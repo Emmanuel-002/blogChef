@@ -1,0 +1,108 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #876b8d;
+  color: #581212;
+}
+
+header {
+  background: #4ce725;
+  color: #f5f2f2ec;
+  padding: 15px 20px;
+  text-align: center;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 15px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+}
+
+nav a:hover {
+  background-color: rgba(255, 255, 255, 0.651);
+  color: green;
+  border: none;
+  border-radius: 10px;
+}
+
+main {
+  padding: 20px;
+}
+
+.form-section {
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.form-section h2 {
+  margin-top: 0;
+}
+
+label {
+  display: block;
+  margin: 10px 0 5px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+textarea,
+select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+.task-section {
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.task-section h3 {
+  margin-top: 0;
+}
+
+#task-list {
+  list-style: none;
+  padding: 0;
+}
+
+#task-list li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+#task-list li:last-child {
+  border-bottom: none;
+}
+

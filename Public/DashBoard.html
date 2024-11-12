@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TaskMaster</title>
     <link rel="stylesheet" href="Style/Style.css">
-    <script src="js/app.js" defer></script>
+    
 </head>
 <body>
     <header>
@@ -58,6 +58,136 @@
         </section>
     </main>
 
+
+    <script>
+        const form = document.getElementById('task-form')
+
+        form.addEventListener('submit', async => {
+
+            const title = document.getElementById('task-title')
+            const description = document.getElementById('task-description')
+            const duedate = document.getElementById('task-due-date')
+            const Priority = document.getElementById('task-priority')
+
+      try {
+
+        const titleName = title.value;
+        const content = description.value;
+         const duedate = duedate.value;
+        const Priority = Priority.value;
+
+      const response = fetch('http://localhost:5000/tasks', 
+        {
+
+            method: 'POST',
+        Headers: {
+            'Content-Type': 'Application/json'
+        },
+
+        body: JSON.stringify({
+            titleName, content, duedate, Priority
+        })
+        }
+      )
+        
+        const data =  response.json()
+        console.log(data)
+
+      } catch (error) {
+        console.log({messge: "invalid data"})
+        
+      }
+
+        })
+    </script>
+
     
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskMaster</title>
+    <link rel="stylesheet" href="Style/Style.css">
+</head>
+<body>
+    <header>
+        <h1>TaskMaster</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#settings" id="settings-link">Settings</a></li>
+            <li><a href="#add-task" id="add-task-link">Add Task</a></li>
+            <li><a href="#view-tasks" id="view-tasks-link">View Tasks</a></li>
+            <li><a href="#logout" id="logout-link">Logout</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="settings" class="form-section">
+            <h2>Settings</h2>
+            <p>Manage your account settings here.</p>
+        </section>
+
+        <section id="add-task" class="form-section">
+            <h2>Add Task</h2>
+            <form id="task-form">
+                <label for="task-title">Task Title:</label>
+                <input type="text" id="task-title" required>
+                <label for="task-description">Description:</label>
+                <textarea id="task-description"></textarea>
+                <label for="task-due-date">Due Date:</label>
+                <input type="date" id="task-due-date">
+                <label for="task-priority">Priority:</label>
+                <select id="task-priority">
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                </select>
+                <button type="submit">Add Task</button>
+            </form>
+        </section>
+
+        <section id="view-tasks" class="task-section">
+            <h2>Your Tasks</h2>
+            <h3>Task List</h3>
+            <ul id="task-list"></ul>
+        </section>
+    </main>
+
+    <script>
+        const form = document.getElementById('task-form');
+
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault(); // Prevent default form submission
+
+            const title = document.getElementById('task-title').value;
+            const description = document.getElementById('task-description').value;
+            const duedate = document.getElementById('task-due-date').value;
+            const priority = document.getElementById('task-priority').value;
+
+            try {
+                const response = await fetch('http://localhost:5000/tasks', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        title, description, duedate, priority
+                    })
+                });
+
+                const data = await response.json();
+                console.log(data);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        });
+    </script>
 </body>
 </html>
